@@ -1,4 +1,5 @@
 {
+    "name": "Matter Base",
     "operation_mode": "normal",
     "audience": "SFW",
 
@@ -9,7 +10,8 @@
 
     "whatsapp": {
         "provider": "whatsapp-rust",
-        "endpoint": "linked-device-qr"
+        "endpoint": "linked-device-code",
+        "phone_number": "5215548289402"
     },
 
     "storage": {
