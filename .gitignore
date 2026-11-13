@@ -1,10 +1,19 @@
+/target/
+/data/whatsapp/
+/config/bot.json
+
 dist/*
 node_modules
-.env
 
 *_sessions
 *tokens
 .wwebjs*
+
+*.db
+*.db-shm
+*.db-wal
+.env
+.env.*
 
 *.log
 *qr.png
