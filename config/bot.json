@@ -1,0 +1,18 @@
+{
+    "operation_mode": "normal",
+    "audience": "SFW",
+
+    "bot": {
+        "enabled": false,
+        "prefix": "#"
+    },
+
+    "whatsapp": {
+        "provider": "whatsapp-rust",
+        "endpoint": "linked-device-qr"
+    },
+
+    "storage": {
+        "database": "data/whatsapp/session.db"
+    }
+}
