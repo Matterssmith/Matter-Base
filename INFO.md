@@ -1,19 +1,39 @@
 # Matter Base
 
-Base inicial del sistema Matter Bot.
+Base inicial del ecosistema Matterssmith.
 
 ## Tecnologías
 
 - Rust
-- WhatsApp Rust
 - Tokio
+- WhatsApp Rust
 - SQLite
+
+## Requisitos
+
+- Rust
+- Cargo
+- Conexión a Internet
+- Una cuenta de WhatsApp activa
+
+## Configuración
+
+Editar:
+
+    config/bot.json
+
+Configurar el número internacional de WhatsApp:
+
+    "phone_number": "52XXXXXXXXXX"
+
+El número debe incluir el código de país.
+
+Se permiten únicamente los caracteres de formato habituales.
+El sistema normaliza el número antes de enviarlo al proveedor.
 
 ## Instalación
 
-Instalar Rust y Cargo.
-
-Desde la raíz del proyecto ejecutar:
+Desde la raíz:
 
     cargo build
 
@@ -21,57 +41,64 @@ Desde la raíz del proyecto ejecutar:
 
     cargo run
 
-## Conexión WhatsApp
+## Vincular WhatsApp
 
-La primera ejecución inicia el proceso de vinculación.
+Matter Base utiliza el emparejamiento mediante número de teléfono.
 
-Escanea el código QR desde:
+1. Iniciar Matter Base en el servidor.
+2. Esperar el código de ocho caracteres.
+3. Abrir WhatsApp en el teléfono de la cuenta que se vinculará.
+4. Entrar en Dispositivos vinculados.
+5. Seleccionar Vincular dispositivo.
+6. Seleccionar Vincular con número de teléfono.
+7. Introducir el código mostrado por Matter Base.
 
-WhatsApp > Dispositivos vinculados > Vincular dispositivo.
+No es necesario escanear el QR.
+
+## Sesión
 
 La sesión se almacena en:
 
     data/whatsapp/session.db
 
-No es necesario volver a vincular la cuenta después
-de cada reinicio mientras la sesión siga siendo válida.
+La sesión persiste entre reinicios mientras WhatsApp
+mantenga el dispositivo vinculado.
 
-## Estado del bot
+No publicar ni compartir este archivo.
 
-El bot viene desactivado por defecto.
+## Configuración del bot
 
-Para habilitarlo, editar:
-
-    config/bot.json
-
-Cambiar:
+Por defecto:
 
     "enabled": false
 
-Por:
+Para habilitar:
 
     "enabled": true
 
-Después reiniciar el programa.
+Prefijo:
 
-## Pruebas
+    "#"
 
-Enviar:
+## Comandos
 
     #ping
-
-Respuesta:
-
-    Pong! Matter Base está conectado.
-
-Enviar:
-
     #help
 
-Muestra los comandos disponibles.
+## Arquitectura
+
+Core
+  -> Provider Manager
+  -> Endpoint Manager
+  -> WhatsApp
+  -> Router
+  -> Command Manager
 
 ## Seguridad
 
-No compartir la base de datos de sesión.
+La conexión utiliza una implementación comunitaria
+del protocolo de WhatsApp Web.
 
-La carpeta data/ debe mantenerse fuera de repositorios públicos.
+No es una integración oficial de Meta.
+Utilizar clientes alternativos puede implicar restricciones
+sobre la cuenta de WhatsApp.
