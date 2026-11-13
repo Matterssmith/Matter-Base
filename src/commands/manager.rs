@@ -8,16 +8,19 @@ pub async fn execute(
     match command.as_str() {
         "ping" => {
             if let Err(error) = ctx
-                .reply("Pong! Matter Bot está conectado.")
+                .reply("Pong! Matter Base está conectado.")
                 .await
             {
-                warn!("No se pudo responder a ping: {}", error);
+                warn!(
+                    "No se pudo responder a ping: {}",
+                    error
+                );
             }
         }
 
         "help" => {
             let response = "\
-╭━━〔 MATTER BOT 〕
+╭━━〔 MATTER BASE 〕
 ┃
 ┃ Comandos disponibles:
 ┃
@@ -27,7 +30,10 @@ pub async fn execute(
 ╰━━━━━━━━━━━━";
 
             if let Err(error) = ctx.reply(response).await {
-                warn!("No se pudo responder a help: {}", error);
+                warn!(
+                    "No se pudo responder a help: {}",
+                    error
+                );
             }
         }
 
