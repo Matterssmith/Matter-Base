@@ -3,7 +3,7 @@
     "audience": "SFW",
 
     "bot": {
-        "enabled": false,
+        "enabled": true,
         "prefix": "#"
     },
 
