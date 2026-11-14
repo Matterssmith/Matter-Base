@@ -1,104 +1,45 @@
 # Matter Base
 
-Base inicial del ecosistema Matterssmith.
+Reusable core infrastructure for the Matterssmith ecosystem.
 
-## Tecnologías
+Matter Base is the public foundation used by applications and
+services belonging to the Matterssmith ecosystem.
 
-- Rust
-- Tokio
-- WhatsApp Rust
-- SQLite
+It provides reusable infrastructure without containing the
+business logic of individual applications.
 
-## Requisitos
+## Responsibilities
 
-- Rust
-- Cargo
-- Conexión a Internet
-- Una cuenta de WhatsApp activa
+- Runtime foundation
+- Application context
+- Configuration management
+- Logging
+- Lifecycle foundation
+- Service registry
+- Event system
+- Internationalization foundation
+- Module contracts
 
-## Configuración
+## Architecture
 
-Editar:
+Matter Base is designed as an independent library.
 
-    config/bot.json
+Applications consume Matter Base as a dependency.
 
-Configurar el número internacional de WhatsApp:
+Matter Base does not depend on Matter Bot, Matter Web,
+Matter AI, Matter API, or any other ecosystem application.
 
-    "phone_number": "52XXXXXXXXXX"
+## Repository
 
-El número debe incluir el código de país.
+https://github.com/matterssmith-net/Matter-Base
 
-Se permiten únicamente los caracteres de formato habituales.
-El sistema normaliza el número antes de enviarlo al proveedor.
+## Usage
 
-## Instalación
+Add Matter Base to a Rust project:
 
-Desde la raíz:
-
-    cargo build
-
-## Iniciar
-
-    cargo run
-
-## Vincular WhatsApp
-
-Matter Base utiliza el emparejamiento mediante número de teléfono.
-
-1. Iniciar Matter Base en el servidor.
-2. Esperar el código de ocho caracteres.
-3. Abrir WhatsApp en el teléfono de la cuenta que se vinculará.
-4. Entrar en Dispositivos vinculados.
-5. Seleccionar Vincular dispositivo.
-6. Seleccionar Vincular con número de teléfono.
-7. Introducir el código mostrado por Matter Base.
-
-No es necesario escanear el QR.
-
-## Sesión
-
-La sesión se almacena en:
-
-    data/whatsapp/session.db
-
-La sesión persiste entre reinicios mientras WhatsApp
-mantenga el dispositivo vinculado.
-
-No publicar ni compartir este archivo.
-
-## Configuración del bot
-
-Por defecto:
-
-    "enabled": false
-
-Para habilitar:
-
-    "enabled": true
-
-Prefijo:
-
-    "#"
-
-## Comandos
-
-    #ping
-    #help
-
-## Arquitectura
-
-Core
-  -> Provider Manager
-  -> Endpoint Manager
-  -> WhatsApp
-  -> Router
-  -> Command Manager
-
-## Seguridad
-
-La conexión utiliza una implementación comunitaria
-del protocolo de WhatsApp Web.
-
-No es una integración oficial de Meta.
-Utilizar clientes alternativos puede implicar restricciones
-sobre la cuenta de WhatsApp.
+```toml
+[dependencies]
+matter-base = {
+    git = "https://github.com/matterssmith-net/Matter-Base",
+    branch = "matter"
+}
