@@ -1,4 +1,3 @@
-```
 # Matter Base Architecture
 
 ## Purpose
@@ -32,3 +31,4 @@ Matter Ecosystem
        +-- Events
        +-- Modules
        +-- i18n
+```
