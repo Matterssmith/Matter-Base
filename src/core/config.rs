@@ -4,24 +4,6 @@ use serde::{Deserialize, Serialize};
 use std::fs;
 use std::path::Path;
 
-const DEFAULT_CONFIG: &str = r##"{
-    "name": "Matter Base",
-    "operation_mode": "normal",
-    "audience": "SFW",
-    "bot": {
-        "enabled": false,
-        "prefix": "#"
-    },
-    "whatsapp": {
-        "provider": "whatsapp-rust",
-        "endpoint": "linked-device-code",
-        "phone_number": ""
-    },
-    "storage": {
-        "database": "data/whatsapp/session.db"
-    }
-}"##;
-
 #[derive(Debug, Clone, Serialize, Deserialize)]
 #[serde(default)]
 pub struct AppConfig {
@@ -56,8 +38,14 @@ pub struct StorageSettings {
 
 impl Default for AppConfig {
     fn default() -> Self {
-        serde_json::from_str(DEFAULT_CONFIG)
-            .expect("La configuración predeterminada de Matter Base no es válida")
+        Self {
+            name: "Matter Base".to_string(),
+            operation_mode: "normal".to_string(),
+            audience: "SFW".to_string(),
+            bot: BotSettings::default(),
+            whatsapp: WhatsAppSettings::default(),
+            storage: StorageSettings::default(),
+        }
     }
 }
 
