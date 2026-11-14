@@ -1,19 +1,24 @@
 /target/
-/data/whatsapp/
-/config/bot.json
+/build/
+dist/
 
-dist/*
-node_modules
-
-*_sessions
-*tokens
-.wwebjs*
-
-*.db
-*.db-shm
-*.db-wal
 .env
 .env.*
+!.env.example
 
 *.log
-*qr.png
+*.tmp
+*.bak
+
+.DS_Store
+Thumbs.db
+
+.idea/
+.vscode/
+
+config/local.json
+config/secrets.json
+
+data/
+storage/
+cache/
